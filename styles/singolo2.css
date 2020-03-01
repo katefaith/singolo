@@ -56,7 +56,7 @@ h3 {
 }
 
 .wrapper {
-  max-width: 1020px;
+  max-width: 940px;
   margin: auto;
 }
 
@@ -86,7 +86,6 @@ h3 {
 .portfolio__wrapper {
   display: flex;
   flex-direction: column;
-  padding: 0 40px;
 }
 
 .portfolio__heading {
@@ -140,6 +139,8 @@ h3 {
 }
 
 .portfolio__item {
+  flex-basis: auto;
+  width: 23.4%;
   margin-bottom: 20px;
 }
 
@@ -149,6 +150,8 @@ h3 {
 
 .portfolio__item img {
   display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* About Us */
@@ -163,7 +166,6 @@ h3 {
 .about-us__wrapper {
   display: flex;
   flex-direction: column;
-  padding: 0 40px;
 }
 
 .about-us__heading {
