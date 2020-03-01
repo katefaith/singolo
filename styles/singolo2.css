@@ -122,8 +122,11 @@ h3 {
   border: 1px solid var(--color-text);
   border-radius: 5px;
   cursor: pointer;
+
+  transition: all 0.3s;
 }
 
+.tags__item:hover,
 .tags__item--selected {
   color: var(--color-tag-selected);
 
