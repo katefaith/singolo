@@ -129,7 +129,7 @@ h3 {
 }
 
 .contact-info__text {
-  margin: 10px 0 23px;
+  margin: 10px 0 24px;
 
   text-align: justify;
   letter-spacing: -0.15px;
@@ -139,6 +139,8 @@ h3 {
 .contact-info__tel,
 .contact-info__email {
   padding-left: 22px;
+
+  letter-spacing: -0.15px;
 
   background-repeat: no-repeat;
 }
@@ -156,18 +158,18 @@ h3 {
 }
 
 .contact-info__address {
-  background-image: url("/assets/images/icon-location.png");
+  background-image: url("../assets/images/icon-location.png");
   background-position: 3px center;
 }
 
 .contact-info__tel {
-  background-image: url("/assets/images/icon-tel.png");
+  background-image: url("../assets/images/icon-tel.png");
   background-position: 2px center;
 }
 
 .contact-info__email {
-  background-image: url("/assets/images/icon-mail.png");
-  background-position: 0 10px;
+  background-image: url("../assets/images/icon-mail.png");
+  background-position: 0 8px;
 }
 
 .form {
@@ -178,7 +180,7 @@ h3 {
 
 .input-text {
   margin-bottom: 16px;
-  padding: 6px 14px 7px;
+  padding: 6px 13px 7px;
 
   font-size: 1.2rem;
   line-height: 2.156rem;
