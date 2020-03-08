@@ -229,3 +229,43 @@ h3 {
 .btn:hover {
   opacity: 0.8;
 }
+
+/*  Footer */
+.footer {
+  font-size: 1.2rem;
+  color: var(--color-heading);
+
+  background-color: var(--background-dark);
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__socials {
+  padding: 22px 0;
+}
+
+.socials {
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: 8px;
+}
+
+.socials__link {
+  display: inline-block;
+
+  border-radius: 50%;
+
+  transition: all 0.3s;
+}
+
+.socials__link:hover {
+  opacity: 0.3;
+}
+
+.socials__link img {
+  display: block;
+}
