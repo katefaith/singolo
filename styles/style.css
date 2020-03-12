@@ -101,7 +101,9 @@ h3 {
 }
 
 .navigation__link {
-  margin-left: 8px;
+  display: inline-block;
+  vertical-align: baseline;
+  padding-left: 8px;
 
   font-size: 1.2rem;
   font-family: "Lato Bold", Verdana, sans-serif;
@@ -111,6 +113,10 @@ h3 {
   letter-spacing: -0.15px;
 
   transition: color 0.3s;
+}
+
+.navigation__link--active {
+  color: var(--color-primary);
 }
 
 .navigation__link:hover {
