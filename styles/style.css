@@ -249,6 +249,7 @@ h3 {
   font-size: 1.2rem;
   line-height: 2.15rem;
   text-align: justify;
+  word-break: break-word;
 }
 
 /* Portfolio */
