@@ -333,9 +333,12 @@ main {
 }
 
 .portfolio__item {
+  box-sizing: border-box;
   flex-basis: auto;
   width: 23.405%;
+  max-height: 187px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .portfolio__item:nth-child(n+13) {
@@ -347,6 +350,11 @@ main {
   width: 100%;
   height: 100%;
   animation: transparentToVisible 0.8s;
+}
+
+.portfolio__item--framed {
+  border: 5px solid #F06C64;
+  cursor: default;
 }
 
 @keyframes transparentToVisible {
