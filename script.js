@@ -6,6 +6,8 @@ nav.addEventListener('click', menuSwitcher);
 tags.addEventListener('click', tagsSwitcher);
 portfolioList.addEventListener('click', addBorderToImage);
 
+initSlider();
+
 function menuSwitcher(event) {
   if (event.target.tagName === 'A') {
     nav.querySelectorAll('a').forEach(a => {
@@ -44,5 +46,29 @@ function addBorderToImage(event) {
       portfolioItem.classList.remove('portfolio__item--framed');
     });
     event.target.parentNode.classList.add('portfolio__item--framed')
+  }
+}
+
+function initSlider() {
+  const slides = document.querySelectorAll('.slider__slide');
+  const btnNext = document.querySelector('.slider__arrow-next');
+  const btnPrev = document.querySelector('.slider__arrow-prev');
+  let currentSlide = 0;
+
+  btnNext.addEventListener('click', showNextSlide);
+  btnPrev.addEventListener('click', showPrevSlide);
+
+  function showNextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  function showPrevSlide() {
+    goToSlide(currentSlide - 1);
+  }
+
+  function goToSlide(n) {
+    slides[currentSlide].classList.remove('slider__slide--active');
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('slider__slide--active');
   }
 }

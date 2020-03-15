@@ -15,8 +15,9 @@
 
   --background-light: #f2f2f2;
   --background-dark: #2d303a;
-  --background-arrow-hovered: #ce5d56;
+  --background-arrow-hovered: #80808040;
   --background-input: #d6564f;
+  --background-blue: #648bf0;
 }
 
 html {
@@ -86,7 +87,7 @@ main {
 .header {
   box-sizing: border-box;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   padding: 0 10px;
 
@@ -147,15 +148,44 @@ main {
 
 .slider {
   position: relative;
+  height: 600px;
+}
 
+.slider__container {
+  position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.slider__slide {
+  box-sizing: border-box;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: 1;
+
+	transition: opacity 1s;
+}
+
+.slider__slide--first {
   background-color: var(--color-primary);
   border-bottom: 6px solid var(--color-border-red);
 }
 
-.slider__slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.slider__slide--second {
+  background-color: var(--background-blue);
+  border-bottom: 6px solid var(--background-blue);
+}
+
+.slider__slide--active {
+	opacity: 1;
+	z-index: 2;
 }
 
 .slider__slide img {
@@ -165,8 +195,10 @@ main {
 
 .slider__arrow-prev,
 .slider__arrow-next {
+  box-sizing: border-box;
   position: absolute;
   top: 0;
+  z-index: 2;
 
   display: flex;
   align-items: center;
@@ -175,7 +207,7 @@ main {
 
   cursor: pointer;
 
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 }
 
 .slider__arrow-prev img,
@@ -186,6 +218,8 @@ main {
 .slider__arrow-prev:hover,
 .slider__arrow-next:hover {
   background-color: var(--background-arrow-hovered);
+  border-top: 6px solid var(--background-arrow-hovered);
+  border-bottom: 6px solid var(--background-arrow-hovered);
 }
 
 .slider__arrow-prev {
