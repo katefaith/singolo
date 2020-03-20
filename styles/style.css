@@ -25,6 +25,7 @@ html {
 }
 
 body {
+  position: relative;
   margin: 0;
 
   font-size: 1.8rem;
@@ -662,4 +663,55 @@ main {
 
 .footer__socials {
   padding: 22px 0;
+}
+
+/* Modal */
+
+.modal {
+  display: none;
+}
+
+.modal--visible {
+  display: block
+}
+
+.modal__overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: #0007;
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 50px;
+  min-width: 300px;
+  max-width: 500px;
+  max-height: 50vh;
+  overflow-y: auto;
+  background-color: var(--background-light);
+}
+
+.modal__heading {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.modal__subject,
+.modal__portfolio {
+  margin: 0;
+  margin-bottom: 5px;
+  word-break: break-word;
+}
+
+.modal__btn {
+  margin-top: 20px;
+  align-self: center;
 }

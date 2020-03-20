@@ -1,10 +1,29 @@
 const nav = document.querySelector('#navigation');
 const tags = document.querySelector('#tags');
 const portfolioList = document.querySelector('#portfolio-list');
+const form = document.querySelector('#form');
+const modal = document.querySelector('#modal');
+const modalOverlay = document.querySelector('.modal__overlay');
+const btnClose = document.querySelector('#btn-close');
+const btnSubmit = document.querySelector('#btn-submit');
 
 nav.addEventListener('click', menuSwitcher);
 tags.addEventListener('click', tagsSwitcher);
 portfolioList.addEventListener('click', addBorderToImage);
+
+// взаимодействия с с формой модальным окном
+btnClose.addEventListener('click', closeModal);
+document.addEventListener('keydown', event => {
+  if (event.keyCode === 27) {
+    closeModal();
+  }
+});
+modalOverlay.addEventListener('click', event => {
+  if (event.target.classList.contains('modal__overlay')) {
+    closeModal();
+  }
+});
+form.addEventListener('submit', submitForm);
 
 initSlider();
 
@@ -71,4 +90,31 @@ function initSlider() {
     currentSlide = (n + slides.length) % slides.length;
     slides[currentSlide].classList.add('slider__slide--active');
   }
+}
+
+function closeModal() {
+  modal.classList.remove('modal--visible');
+  resetForm()
+}
+
+function submitForm(event) {
+  event.preventDefault();
+  const subject = document.querySelector('#subject').value
+  const describe = document.querySelector('#describe').value
+
+  addTextToModal(subject, describe);
+  showModal()
+}
+
+function showModal() {
+  modal.classList.add('modal--visible')
+}
+
+function addTextToModal(subject, describe) {
+  modal.querySelector('.modal__subject').innerText = subject ? `Subject: ${subject}` : 'No subject';
+  modal.querySelector('.modal__portfolio').innerText = describe ? `Description: ${describe}` : 'No description';
+}
+
+function resetForm() {
+  form.reset();
 }
