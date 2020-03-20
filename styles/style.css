@@ -371,7 +371,6 @@ main {
   box-sizing: border-box;
   flex-basis: auto;
   width: 23.405%;
-  max-height: 187px;
   margin-bottom: 20px;
   cursor: pointer;
 }
@@ -388,7 +387,7 @@ main {
 }
 
 .portfolio__item--framed {
-  border: 5px solid #F06C64;
+  outline: 5px solid #F06C64;
   cursor: default;
 }
 
