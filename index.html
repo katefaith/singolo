@@ -238,12 +238,12 @@
           <h2 class="contacts__heading">Get a Quote</h2>
           <p class="contacts__description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
           <div class="contacts__content">
-            <form class="form  contacts__form" action="#" method="POST">
+            <form class="form  contacts__form" id="form" action="#" method="POST">
               <input class="input-text" id="name" name="name" type="text" placeholder="Name (Required)" required>
               <input class="input-text" id="email" name="email" type="email" placeholder="Email (Required)" required>
               <input class="input-text" id="subject" name="subject" type="text" placeholder="Subject">
-              <textarea class="input-text  input-text--textarea" placeholder="Describe your project in detail..."></textarea>
-              <input class="btn" type="submit" value="Submit">
+              <textarea class="input-text  input-text--textarea" id="describe" maxlength="600" placeholder="Describe your project in detail..."></textarea>
+              <input class="btn" id="btn-submit" type="submit" value="Submit">
             </form>
             <div class="contact-info  contacts__info">
               <h3 class="contact-info__heading">Contact Information</h3>
@@ -277,6 +277,17 @@
         </div>
       </div>
     </footer>
+
+    <div class="modal" id="modal">
+      <div class="modal__overlay">
+        <div class="modal__content">
+          <h2 class="modal__heading">The letter was sent</h2>
+          <p class="modal__subject">Subject:</p>
+          <p class="modal__portfolio">Description:</p>
+          <input class="btn  modal__btn" id="btn-close" type="submit" value="ОК">
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
