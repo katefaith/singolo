@@ -97,16 +97,22 @@ function initSlider() {
 
   function showNextSlide() {
     goToSlide(currentSlide + 1);
+    changeBackground();
   }
 
   function showPrevSlide() {
     goToSlide(currentSlide - 1);
+    changeBackground();
   }
 
   function goToSlide(n) {
     slides[currentSlide].classList.remove('slider__slide--active');
     currentSlide = (n + slides.length) % slides.length;
     slides[currentSlide].classList.add('slider__slide--active');
+  }
+
+  function changeBackground() {
+    document.querySelector('#slider').classList.toggle("slider--second-bg")
   }
 }
 
@@ -135,4 +141,16 @@ function addTextToModal(subject, describe) {
 
 function resetForm() {
   form.reset();
+}
+
+/* ACTIVATING PHONE SCREENS */
+
+const iphoneVertical = document.querySelector('.iphone-vertical');
+const iphoneHorizontal = document.querySelector('.iphone-horizontal');
+
+iphoneVertical.addEventListener('click', activateScreen);
+iphoneHorizontal.addEventListener('click', activateScreen);
+
+function activateScreen() {
+  this.firstElementChild.classList.toggle('hidden');
 }
