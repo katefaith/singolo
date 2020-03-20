@@ -150,14 +150,25 @@ main {
 
 .slider {
   position: relative;
-  height: 600px;
+  height: 594px;
   scroll-margin-top: 95px;
+
+  background-color: var(--color-primary);
+  border-bottom: 6px solid var(--color-border-red);
+
+  transition: background-color 1s, border-bottom 1s;
+}
+
+.slider--second-bg {
+  background-color: var(--background-blue);
+  border-bottom: 6px solid var(--background-blue);
+
+  transition: background-color 1s, border-bottom 1s;
 }
 
 .slider__container {
   position: relative;
-	width: 100%;
-	height: 100%;
+  height: 100%;
 }
 
 .slider__slide {
@@ -181,29 +192,56 @@ main {
 	z-index: 2;
 }
 
-.slider__first-slide {
-  background-color: var(--color-primary);
-  border-bottom: 6px solid var(--color-border-red);
-}
-
-.slider__second-slide {
-  background-color: var(--background-blue);
-  border-bottom: 6px solid var(--background-blue);
-}
-
-.slider__first-slide img {
+.slider__slide img {
   display: block;
-  padding: 52px 36.5px 58px;
+}
+
+/*.slider__first-slide img {
+  display: block;
+  margin: 52px 36.5px 58px;
 }
 
 .slider__second-slide img {
   display: block;
-  padding: 43px 0 38px;
+  margin: 43px 0 38px;
+}*/
+
+.iphone-vertical {
+  position: relative;
+  margin: 52px 36.5px 58px;
+  cursor: pointer;
+}
+
+.iphone-vertical__display {
+  position: absolute;
+  width: 188px;
+  height: 334px;
+  top: 65px;
+  left: 14px;
+  background-color: #000000;
+}
+
+.iphone-horizontal {
+  position: relative;
+  margin: 32px 36px 38px;
+  cursor: pointer;
+}
+
+.iphone-horizontal__display {
+  position: absolute;
+  width: 333px;
+  height: 188px;
+  top: 14px;
+  left: 60px;
+  background-color: #000000;
+}
+
+.hidden {
+  display: none;
 }
 
 .slider__arrow-prev,
 .slider__arrow-next {
-  box-sizing: border-box;
   position: absolute;
   top: 0;
   z-index: 2;
@@ -218,15 +256,9 @@ main {
   transition: background-color 0.3s;
 }
 
-.slider__arrow-prev img,
-.slider__arrow-next img {
-  margin-bottom: 5px;
-}
-
 .slider__arrow-prev:hover,
 .slider__arrow-next:hover {
   background-color: var(--background-arrow-hovered);
-  border-top: 6px solid var(--background-arrow-hovered);
   border-bottom: 6px solid var(--background-arrow-hovered);
 }
 
@@ -236,6 +268,29 @@ main {
 
 .slider__arrow-next {
   right: 0;
+}
+
+.black-display {
+  position: absolute;
+  background-color: #000000;
+}
+
+.black-display--hidden {
+  display: none;
+}
+
+.black-display--vertical {
+  width: 188px;
+  height: 334px;
+  top: 117px;
+  left: 276px;
+}
+
+.black-display--horizontal {
+  width: 333px;
+  height: 188px;
+  top: 188px;
+  right: 352px;
 }
 
 /* Our Services */
