@@ -7,11 +7,12 @@ const modalOverlay = document.querySelector('.modal__overlay');
 const btnClose = document.querySelector('#btn-close');
 const btnSubmit = document.querySelector('#btn-submit');
 
-nav.addEventListener('click', menuSwitcher);
+document.addEventListener('scroll', onScroll)
+//nav.addEventListener('click', menuSwitcher);
 tags.addEventListener('click', tagsSwitcher);
 portfolioList.addEventListener('click', addBorderToImage);
 
-// взаимодействия с с формой модальным окном
+// взаимодействия с формой и модальным окном
 btnClose.addEventListener('click', closeModal);
 document.addEventListener('keydown', event => {
   if (event.keyCode === 27) {
@@ -34,6 +35,23 @@ function menuSwitcher(event) {
     });
     event.target.classList.add('navigation__link--active');
   }
+}
+
+function onScroll() {
+  const currentPosition = window.scrollY + document.documentElement.clientHeight/4;
+  const sections = document.querySelectorAll('main > section');
+  const headerHeight = document.querySelector('#header').offsetHeight;
+
+  sections.forEach(elem => {
+    if (elem.offsetTop - headerHeight <= currentPosition) {
+      nav.querySelectorAll('a').forEach(a => {
+        a.classList.remove('navigation__link--active');
+        if (elem.getAttribute('id') === a.getAttribute('href').substring(1)) {
+          a.classList.add('navigation__link--active');
+        }
+      });
+    }
+  })
 }
 
 function tagsSwitcher(event) {
