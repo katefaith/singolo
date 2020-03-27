@@ -87,32 +87,64 @@ function addBorderToImage(event) {
 }
 
 function initSlider() {
-  const slides = document.querySelectorAll('.slider__slide');
+  const slides = document.querySelectorAll('.slider__item');
   const btnNext = document.querySelector('.slider__arrow-next');
   const btnPrev = document.querySelector('.slider__arrow-prev');
   let currentSlide = 0;
+  let isEnabled = true;
 
   btnNext.addEventListener('click', showNextSlide);
   btnPrev.addEventListener('click', showPrevSlide);
 
+  function goToSlide(n) {
+    currentSlide = (n + slides.length) % slides.length;
+  }
+
+  function hideSlide(direction) {
+    isEnabled = false;
+    slides[currentSlide].classList.add(direction);
+    slides[currentSlide].addEventListener('animationend', function() {
+      this.classList.remove('slider__item--active', direction);
+    })
+  }
+
+  function showSlide(direction) {
+    slides[currentSlide].classList.add('slider__item--next', direction);
+    slides[currentSlide].addEventListener('animationend', function() {
+      this.classList.remove('slider__item--next', direction);
+      this.classList.add('slider__item--active');
+      isEnabled = true;
+    })
+  }
+
+  function previousSlide(n) {
+    hideSlide('to-right')
+    goToSlide(n - 1);
+    showSlide('from-left');
+  }
+
+  function nextSlide(n) {
+    hideSlide('to-left')
+    goToSlide(n + 1);
+    showSlide('from-right');
+  }
+
   function showNextSlide() {
-    goToSlide(currentSlide + 1);
-    changeBackground();
+    if (isEnabled) {
+      nextSlide(currentSlide);
+      changeBackground();
+    }
   }
 
   function showPrevSlide() {
-    goToSlide(currentSlide - 1);
-    changeBackground();
-  }
-
-  function goToSlide(n) {
-    slides[currentSlide].classList.remove('slider__slide--active');
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].classList.add('slider__slide--active');
+    if (isEnabled) {
+      previousSlide(currentSlide);
+      changeBackground();
+    }
   }
 
   function changeBackground() {
-    document.querySelector('#slider').classList.toggle("slider--second-bg")
+    document.querySelector('#promo').classList.toggle("promo--second-bg")
   }
 }
 

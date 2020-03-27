@@ -11,7 +11,7 @@
       <div class="wrapper  header__wrapper">
         <h1 class="logo">Singolo<span>*</span></h1>
         <nav class="header-navigation  navigation" id="navigation">
-          <a class="navigation__link  navigation__link--active" href="#slider">Home</a>
+          <a class="navigation__link  navigation__link--active" href="#promo">Home</a>
           <a class="navigation__link" href="#services">Services</a>
           <a class="navigation__link" href="#portfolio">Portfolio</a>
           <a class="navigation__link" href="#about">About</a>
@@ -20,10 +20,12 @@
       </div>
     </header>
     <main>
-      <section class="slider" id="slider">
+
+      <section class="promo" id="promo">
         <h2 class="visually-hidden">Slider</h2>
-        <div class="slider__container  wrapper">
-            <div class="slider__slide  slider__slide--active  slider__first-slide">
+        <div class="slider  wrapper">
+          <div class="slider__wrapper">
+            <div class="slider__item  slider__item--active">
               <div class="iphone-vertical">
                 <div class="iphone-vertical__display  hidden"></div>
                 <img src="./assets/images/iphone-vertical.png" width="240" height="484" alt="iPhone Horizontal">
@@ -33,17 +35,19 @@
                 <img src="./assets/images/iphone-horizontal.png" width="484" height="240" alt="iPhone Horizontal">
               </div>
             </div>
-            <div class="slider__slide  slider__second-slide">
+            <div class="slider__item">
               <img src="./assets/images/iphones.png" width="517" height="513" alt="iPhone Horizontal">
             </div>
-        </div>
-        <div class="slider__arrow-prev">
-          <img src="./assets/images/arrow-prev.png" width="16" height="27" alt="arrow-prev">
-        </div>
-        <div class="slider__arrow-next">
-          <img src="./assets/images/arrow-next.png" width="16" height="27" alt="arrow-next">
+          </div>
+          <div class="slider__arrow-prev">
+            <img src="./assets/images/arrow-prev.png" width="16" height="27" alt="arrow-prev">
+          </div>
+          <div class="slider__arrow-next">
+            <img src="./assets/images/arrow-next.png" width="16" height="27" alt="arrow-next">
+          </div>
         </div>
       </section>
+
       <section class="services" id="services">
         <div class="wrapper  services__wrapper">
           <h2 class="services__heading">Our Services</h2>
