@@ -1,32 +1,9 @@
+/* MENU SWITCHER */
+
 const nav = document.querySelector('#navigation');
-const tags = document.querySelector('#tags');
-const portfolioList = document.querySelector('#portfolio-list');
-const form = document.querySelector('#form');
-const modal = document.querySelector('#modal');
-const modalOverlay = document.querySelector('.modal__overlay');
-const btnClose = document.querySelector('#btn-close');
-const btnSubmit = document.querySelector('#btn-submit');
 
+nav.addEventListener('click', menuSwitcher);
 document.addEventListener('scroll', onScroll)
-//nav.addEventListener('click', menuSwitcher);
-tags.addEventListener('click', tagsSwitcher);
-portfolioList.addEventListener('click', addBorderToImage);
-
-// взаимодействия с формой и модальным окном
-btnClose.addEventListener('click', closeModal);
-document.addEventListener('keydown', event => {
-  if (event.keyCode === 27) {
-    closeModal();
-  }
-});
-modalOverlay.addEventListener('click', event => {
-  if (event.target.classList.contains('modal__overlay')) {
-    closeModal();
-  }
-});
-form.addEventListener('submit', submitForm);
-
-initSlider();
 
 function menuSwitcher(event) {
   if (event.target.tagName === 'A') {
@@ -38,7 +15,7 @@ function menuSwitcher(event) {
 }
 
 function onScroll() {
-  const currentPosition = window.scrollY + document.documentElement.clientHeight/4;
+  const currentPosition = window.scrollY + document.documentElement.clientHeight / 4;
   const sections = document.querySelectorAll('main > section');
   const headerHeight = document.querySelector('#header').offsetHeight;
 
@@ -53,6 +30,89 @@ function onScroll() {
     }
   })
 }
+
+
+/* SLIDER */
+
+const slides = document.querySelectorAll('.slider__item');
+const btnNext = document.querySelector('.slider__arrow-next');
+const btnPrev = document.querySelector('.slider__arrow-prev');
+let currentSlide = 0;
+let isEnabled = true;
+
+btnNext.addEventListener('click', showNextSlide);
+btnPrev.addEventListener('click', showPrevSlide);
+
+function goToSlide(n) {
+  currentSlide = (n + slides.length) % slides.length;
+}
+
+function hideSlide(direction) {
+  isEnabled = false;
+  slides[currentSlide].classList.add(direction);
+  slides[currentSlide].addEventListener('animationend', function () {
+    this.classList.remove('slider__item--active', direction);
+  })
+}
+
+function showSlide(direction) {
+  slides[currentSlide].classList.add('slider__item--next', direction);
+  slides[currentSlide].addEventListener('animationend', function () {
+    this.classList.remove('slider__item--next', direction);
+    this.classList.add('slider__item--active');
+    isEnabled = true;
+  })
+}
+
+function previousSlide(n) {
+  hideSlide('to-right')
+  goToSlide(n - 1);
+  showSlide('from-left');
+}
+
+function nextSlide(n) {
+  hideSlide('to-left')
+  goToSlide(n + 1);
+  showSlide('from-right');
+}
+
+function showNextSlide() {
+  if (isEnabled) {
+    nextSlide(currentSlide);
+    changeBackground();
+  }
+}
+
+function showPrevSlide() {
+  if (isEnabled) {
+    previousSlide(currentSlide);
+    changeBackground();
+  }
+}
+
+function changeBackground() {
+  document.querySelector('#promo').classList.toggle("promo--second-bg")
+}
+
+
+/* ACTIVATING PHONE SCREENS */
+const iphoneVertical = document.querySelector('.iphone-vertical');
+const iphoneHorizontal = document.querySelector('.iphone-horizontal');
+
+iphoneVertical.addEventListener('click', activateScreen);
+iphoneHorizontal.addEventListener('click', activateScreen);
+
+function activateScreen() {
+  this.firstElementChild.classList.toggle('hidden');
+}
+
+
+/* PORTFOLIO. SWITCH TABS */
+
+const tags = document.querySelector('#tags');
+const portfolioList = document.querySelector('#portfolio-list');
+
+tags.addEventListener('click', tagsSwitcher);
 
 function tagsSwitcher(event) {
   if (event.target.tagName === 'SPAN' && !event.target.classList.contains('tags__item--selected')) {
@@ -77,6 +137,11 @@ function shiftPortfolioByOnePosition() {
   })
 }
 
+
+/* PORTFOLIO. INTERACTION WITH IMAGES */
+
+portfolioList.addEventListener('click', addBorderToImage);
+
 function addBorderToImage(event) {
   if (event.target.tagName === 'IMG') {
     portfolioList.querySelectorAll('.portfolio__item').forEach(portfolioItem => {
@@ -86,67 +151,26 @@ function addBorderToImage(event) {
   }
 }
 
-function initSlider() {
-  const slides = document.querySelectorAll('.slider__item');
-  const btnNext = document.querySelector('.slider__arrow-next');
-  const btnPrev = document.querySelector('.slider__arrow-prev');
-  let currentSlide = 0;
-  let isEnabled = true;
 
-  btnNext.addEventListener('click', showNextSlide);
-  btnPrev.addEventListener('click', showPrevSlide);
+/* FORM AND MODAL WINDOW */
+const form = document.querySelector('#form');
+const modal = document.querySelector('#modal');
+const modalOverlay = document.querySelector('.modal__overlay');
+const btnClose = document.querySelector('#btn-close');
+const btnSubmit = document.querySelector('#btn-submit');
 
-  function goToSlide(n) {
-    currentSlide = (n + slides.length) % slides.length;
+btnClose.addEventListener('click', closeModal);
+document.addEventListener('keydown', event => {
+  if (event.keyCode === 27) {
+    closeModal();
   }
-
-  function hideSlide(direction) {
-    isEnabled = false;
-    slides[currentSlide].classList.add(direction);
-    slides[currentSlide].addEventListener('animationend', function() {
-      this.classList.remove('slider__item--active', direction);
-    })
+});
+modalOverlay.addEventListener('click', event => {
+  if (event.target.classList.contains('modal__overlay')) {
+    closeModal();
   }
-
-  function showSlide(direction) {
-    slides[currentSlide].classList.add('slider__item--next', direction);
-    slides[currentSlide].addEventListener('animationend', function() {
-      this.classList.remove('slider__item--next', direction);
-      this.classList.add('slider__item--active');
-      isEnabled = true;
-    })
-  }
-
-  function previousSlide(n) {
-    hideSlide('to-right')
-    goToSlide(n - 1);
-    showSlide('from-left');
-  }
-
-  function nextSlide(n) {
-    hideSlide('to-left')
-    goToSlide(n + 1);
-    showSlide('from-right');
-  }
-
-  function showNextSlide() {
-    if (isEnabled) {
-      nextSlide(currentSlide);
-      changeBackground();
-    }
-  }
-
-  function showPrevSlide() {
-    if (isEnabled) {
-      previousSlide(currentSlide);
-      changeBackground();
-    }
-  }
-
-  function changeBackground() {
-    document.querySelector('#promo').classList.toggle("promo--second-bg")
-  }
-}
+});
+form.addEventListener('submit', submitForm);
 
 function closeModal() {
   modal.classList.remove('modal--visible');
@@ -173,16 +197,4 @@ function addTextToModal(subject, describe) {
 
 function resetForm() {
   form.reset();
-}
-
-/* ACTIVATING PHONE SCREENS */
-
-const iphoneVertical = document.querySelector('.iphone-vertical');
-const iphoneHorizontal = document.querySelector('.iphone-horizontal');
-
-iphoneVertical.addEventListener('click', activateScreen);
-iphoneHorizontal.addEventListener('click', activateScreen);
-
-function activateScreen() {
-  this.firstElementChild.classList.toggle('hidden');
 }
