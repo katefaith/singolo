@@ -153,6 +153,7 @@ function addBorderToImage(event) {
 
 
 /* FORM AND MODAL WINDOW */
+
 const form = document.querySelector('#form');
 const modal = document.querySelector('#modal');
 const modalOverlay = document.querySelector('.modal__overlay');
