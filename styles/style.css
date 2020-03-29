@@ -123,14 +123,15 @@ main {
   }
 
   .header__wrapper {
-    justify-content: center;
+    justify-content: initial;
   }
 
   .header__burger {
     position: absolute;
-    top: 26px;
+    top: 25px;
     left: 20px;
     display: block;
+    z-index: 1;
     margin: 0;
     padding: 0;
     border: none;
@@ -145,6 +146,19 @@ main {
   .header__burger--rotated {
     transform: rotate(90deg);
   }
+
+  .header__navigation {
+    position: fixed;
+    display: none;
+    height: 100vh;
+    left: 0;
+
+    background-color: #0007;
+  }
+
+  .header__navigation--visible {
+    display: block;
+  }
 }
 
 .logo {
@@ -157,8 +171,15 @@ main {
 
 @media (max-width: 767px) {
   .logo {
-    margin: 20px 0 18px 10px;
+    margin: 21px 0 17px;
+    margin-left: calc(50% - 40px);
     font-size: 2rem;
+    z-index: 1;
+    transition: margin-left 0.5s;
+  }
+
+  .logo--mobile {
+    margin-left: 40px;
   }
 }
 
@@ -201,6 +222,28 @@ main {
 
 @media (max-width: 767px) {
   .navigation {
+    width: 100vw;
+    background-color: #0007;
+  }
+
+  .navigation__wrapper {
+    box-sizing: border-box;
+    padding-top: 232px;
+    padding-left: 64px;
+    width: 278px;
+    height: 100%;
+    background-color: var(--background-dark);
+  }
+
+  .navigation__link {
+    display: block;
+    margin-bottom: 28px;
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    letter-spacing: -0.035em;
+  }
+
+  .navigation__link:after {
     display: none;
   }
 }
@@ -237,6 +280,7 @@ main {
 @media (max-width: 767px) {
   .promo {
     height: 219px;
+    scroll-margin-top: 71px;
     border-bottom: 2px solid var(--color-border-red);
   }
 
@@ -560,6 +604,9 @@ main {
 }
 
 @media (max-width: 767px) {
+  .services {
+    scroll-margin-top: 71px;
+  }
   .services__heading {
     margin-top: 27px
   }
@@ -764,6 +811,7 @@ main {
 @media (max-width: 767px) {
   .portfolio {
     padding-bottom: 22px;
+    scroll-margin-top: 71px;
   }
   .portfolio__heading {
     margin-top: 46px;
@@ -836,6 +884,7 @@ main {
 @media (max-width: 767px) {
   .about-us {
     padding-bottom: 5px;
+    scroll-margin-top: 71px;
   }
   .about-us__heading {
     margin-top: 37px;
@@ -1050,6 +1099,7 @@ main {
 @media (max-width: 767px) {
   .contacts {
     padding-bottom: 33px;
+    scroll-margin-top: 71px;
   }
 
   .contacts__heading {

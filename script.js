@@ -198,3 +198,27 @@ function addTextToModal(subject, describe) {
 function resetForm() {
   form.reset();
 }
+
+
+/* MOBILE MENU */
+const btnBurger = document.querySelector('.header__burger');
+const mobileMenu = document.querySelector('.header__navigation');
+const logo = document.querySelector('.logo');
+
+btnBurger.addEventListener('click', mobileMenuToggle);
+nav.addEventListener('click', closeMobileMenu);
+mobileMenu.addEventListener('click', closeMobileMenu);
+
+function mobileMenuToggle() {
+  mobileMenu.classList.toggle('header__navigation--visible');
+  btnBurger.classList.toggle('header__burger--rotated');
+  logo.classList.toggle('logo--mobile');
+}
+
+function closeMobileMenu(event) {
+  if (event.target.tagName === 'A' || event.target.tagName === 'NAV') {
+    mobileMenu.classList.remove('header__navigation--visible');
+    btnBurger.classList.remove('header__burger--rotated');
+    logo.classList.remove('logo--mobile');
+  }
+}
